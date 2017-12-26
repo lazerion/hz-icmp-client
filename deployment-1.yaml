@@ -1,0 +1,22 @@
+version: '2'
+services:
+  hazelcast-client:
+    image: client:icmp
+    depends_on:
+        - hazelcast
+    volumes:
+        - ./client:/configFolder
+    environment:
+        - JAVA_OPTS=-Dhazelcast.client.config=/configFolder/hazelcast-client.xml
+    links:
+        - "hazelcast:hazelcast"
+    ports:
+        - "5701"
+  hazelcast:
+    image: hz:icmp
+    volumes:
+        - ./server:/configFolder
+    environment:
+        - JAVA_OPTS=-Dhazelcast.config=/configFolder/hazelcast.xml
+    ports:
+        - "5701"
