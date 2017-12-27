@@ -11,6 +11,11 @@
         <property name="hazelcast.client.icmp.ttl">255</property>
     </properties>
 
+    <group>
+        <name>hz-icmp</name>
+        <password>s3crEt</password>
+    </group>
+
     <network>
         <cluster-members>
             <address>hazelcast</address>

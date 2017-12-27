@@ -36,7 +36,7 @@ public class Client {
                 }
             });
             logger.info("Running queue");
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(5);
             queue.clear();
         }
     }
