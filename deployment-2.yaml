@@ -1,0 +1,23 @@
+version: '2'
+services:
+  hazelcast-client:
+    image: client:latency
+    container_name: client
+    depends_on:
+        - hazelcast
+    volumes:
+        - ./latency:/configFolder
+    environment:
+        - JAVA_OPTS=-Dhazelcast.client.config=/configFolder/hazelcast-client.xml
+    links:
+        - "hazelcast:hazelcast"
+    ports:
+        - "5701"
+  hazelcast:
+    image: hz:icmp
+    volumes:
+        - ./server:/configFolder
+    environment:
+        - JAVA_OPTS=-Dhazelcast.config=/configFolder/hazelcast.xml
+    ports:
+        - "5701"
