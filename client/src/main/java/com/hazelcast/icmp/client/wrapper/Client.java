@@ -32,12 +32,16 @@ public class Client {
                     queue.put(value);
                     queue.take();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(), e);
                 }
             });
             logger.info("Running queue");
             TimeUnit.SECONDS.sleep(5);
-            queue.clear();
+            try {
+                queue.clear();
+            } catch (Exception e){
+                logger.error(e.getMessage(), e);
+            }
         }
     }
 }
