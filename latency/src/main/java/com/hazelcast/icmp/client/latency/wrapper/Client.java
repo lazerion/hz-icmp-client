@@ -26,6 +26,7 @@ public class Client {
         logger.info("Get Map {}", map);
         logger.info("Started");
         List<Long> samples = new ArrayList<>();
+        List<Long> stats = new ArrayList<>();
 
         while (true) {
             int size = client.getCluster().getMembers().size();
@@ -42,12 +43,19 @@ public class Client {
                 final String value = RandomStringUtils.randomAlphabetic(1024);
                 final String key = RandomStringUtils.randomAlphabetic(42);
 
+                final long s = System.currentTimeMillis();
                 map.set(key, value);
+                final long e = System.currentTimeMillis() - s;
+                if (e > 1000){
+                    logger.warn("Threshold exceeded {}", e);
+                }
+                stats.add(e);
             });
             long elapsed = System.currentTimeMillis() - startTime;
             samples.add(elapsed);
 
-            if (samples.size() % 100 == 0) {
+            if (samples.size() % 25 == 0) {
+                logger.info("Each iteration {}", stats.stream().filter(it -> it > 1000).mapToLong(it -> it).summaryStatistics());
                 logger.info("Statistics {}", samples.stream().mapToLong(it -> it).summaryStatistics());
             }
 

@@ -24,6 +24,7 @@
         <socket-options>
             <linger-seconds>0</linger-seconds>
         </socket-options>
+        <redo-operation>true</redo-operation>
     </network>
 
 </hazelcast-client>
