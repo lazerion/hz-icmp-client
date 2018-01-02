@@ -12,6 +12,8 @@
         <property name="hazelcast.icmp.echo.fail.fast.on.startup">true</property>
         <property name="hazelcast.merge.next.run.delay.seconds">30</property>
         <property name="hazelcast.merge.first.run.delay.seconds">60</property>
+        <!-- default is 5000 ms -->
+        <property name="hazelcast.operation.backup.timeout.millis">1000</property>
     </properties>
 
     <group>

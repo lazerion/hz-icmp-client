@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 docker-compose -f deployment-2.yaml up -d
-sleep 10s
+sleep 20s
 docker-compose -f deployment-2.yaml scale hazelcast=3
 sleep 60s
 
