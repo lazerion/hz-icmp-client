@@ -9,6 +9,7 @@
         <property name="hazelcast.icmp.timeout">100</property>
         <property name="hazelcast.icmp.interval">1000</property>
         <property name="hazelcast.icmp.ttl">255</property>
+        <property name="hazelcast.icmp.max.attempts">2</property>
         <property name="hazelcast.icmp.echo.fail.fast.on.startup">true</property>
         <property name="hazelcast.merge.next.run.delay.seconds">30</property>
         <property name="hazelcast.merge.first.run.delay.seconds">60</property>

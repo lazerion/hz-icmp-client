@@ -5,11 +5,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <properties>
-        <property name="hazelcast.client.icmp.enabled">true</property>
-        <property name="hazelcast.client.icmp.timeout">100</property>
-        <property name="hazelcast.client.icmp.interval">1000</property>
-        <property name="hazelcast.client.icmp.ttl">255</property>
-        <property name="hazelcast.client.icmp.echo.fail.fast.on.startup">true</property>
         <property name="hazelcast.logging.type">slf4j</property>
         <property name="hazelcast.client.shuffle.member.list">false</property>
     </properties>
@@ -20,6 +15,13 @@
     </group>
 
     <network>
+        <icmp-ping enabled="true">
+            <timeout-milliseconds>100</timeout-milliseconds>
+            <interval-milliseconds>1000</interval-milliseconds>
+            <ttl>255</ttl>
+            <max-attempts>2</max-attempts>
+            <echo-fail-fast-on-startup>true</echo-fail-fast-on-startup>
+        </icmp-ping>
         <cluster-members>
             <address>hazelcast</address>
         </cluster-members>
